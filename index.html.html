@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfil Exportador · Misión Comercial Paraguay 2026</title>
+<style>
+  :root {
+    --azul-oscuro: #2E4A6E;
+    --azul-medio: #4A7EBD;
+    --azul-claro: #A8C8E8;
+    --naranja: #E84C1D;
+    --blanco: #FFFFFF;
+    --gris: #444444;
+    --gris-claro: #f4f6f9;
+    --sombra: 0 2px 12px rgba(46,74,110,0.10);
+    --sombra-hover: 0 6px 24px rgba(46,74,110,0.18);
+    --radius: 12px;
+    --nav-w: 240px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background: var(--gris-claro);
+    color: var(--gris);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--azul-oscuro);
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  }
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    min-height: 70px;
+  }
+  .logo-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .logo-shield {
+    width: 38px; height: 38px;
+    background: var(--azul-medio);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .logo-text { line-height: 1.2; }
+  .logo-text strong { font-size: 13px; font-weight: 700; display: block; letter-spacing: 0.3px; }
+  .logo-text span { font-size: 11px; opacity: .75; }
+  .header-title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--azul-claro);
+    flex: 1;
+    min-width: 160px;
+    line-height: 1.3;
+  }
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .search-box {
+    position: relative;
+  }
+  .search-box input {
+    padding: 8px 14px 8px 36px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 13px;
+    width: 200px;
+    outline: none;
+    transition: background .2s, width .2s;
+  }
+  .search-box input::placeholder { color: rgba(255,255,255,0.5); }
+  .search-box input:focus { background: rgba(255,255,255,0.2); width: 240px; }
+  .search-icon {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+    font-size: 14px; opacity: .6; pointer-events: none;
+  }
+  select {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+  }
+  select option { background: var(--azul-oscuro); }
+  .btn-clear {
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .btn-clear:hover { background: rgba(255,255,255,0.15); }
+
+  /* ── LAYOUT BODY ── */
+  .layout {
+    display: flex;
+    flex: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  /* ── SIDEBAR ── */
+  aside {
+    width: var(--nav-w);
+    flex-shrink: 0;
+    background: var(--blanco);
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .aside-header {
+    padding: 14px 16px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--azul-oscuro);
+    border-bottom: 2px solid var(--gris-claro);
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1;
+  }
+  .aside-list { list-style: none; padding: 8px 0; }
+  .aside-list li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    font-size: 12.5px;
+    color: var(--gris);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all .15s;
+    line-height: 1.3;
+  }
+  .aside-list li a:hover,
+  .aside-list li a.active {
+    color: var(--azul-medio);
+    background: rgba(74,126,189,0.07);
+    border-left-color: var(--azul-medio);
+  }
+  .aside-num {
+    font-size: 10px;
+    color: var(--azul-claro);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main { flex: 1; min-width: 0; }
+
+  .results-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .results-count {
+    font-size: 13px;
+    color: var(--azul-oscuro);
+    font-weight: 600;
+  }
+  .results-count span { color: var(--azul-medio); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--blanco);
+    border-radius: var(--radius);
+    box-shadow: var(--sombra);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--azul-medio), var(--azul-claro));
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--sombra-hover); border-color: var(--azul-claro); }
+  .card:hover::before { opacity: 1; }
+
+  .card-badge {
+    display: inline-block;
+    background: var(--azul-medio);
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    align-self: flex-start;
+    line-height: 1.2;
+  }
+  .card-location {
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--gris);
+    flex: 1;
+  }
+  .card-desc.collapsed {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .btn-more {
+    font-size: 12px;
+    color: var(--azul-medio);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-weight: 600;
+    text-align: left;
+    margin-top: -6px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .chip-rubro { background: rgba(46,74,110,0.1); color: var(--azul-oscuro); }
+  .chip-mercado { background: rgba(232,76,29,0.1); color: var(--naranja); }
+
+  .card-products {
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: #555;
+  }
+  .card-products li { list-style: none; padding-left: 16px; position: relative; }
+  .card-products li::before { content: '▸'; position: absolute; left: 0; color: var(--azul-medio); font-size: 10px; top: 3px; }
+
+  .card-contact {
+    border-top: 1px solid var(--gris-claro);
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+  }
+  .contact-row { display: flex; align-items: flex-start; gap: 6px; }
+  .contact-label { color: var(--azul-oscuro); font-weight: 700; flex-shrink: 0; }
+  .contact-row a { color: var(--azul-medio); text-decoration: none; word-break: break-all; }
+  .contact-row a:hover { text-decoration: underline; }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,35,55,0.65);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(3px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--blanco);
+    border-radius: 16px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: modalIn .25s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(.95) translateY(20px); }
+    to { opacity: 1; transform: none; }
+  }
+  .modal-header {
+    background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+    color: #fff;
+    padding: 24px 28px 20px;
+    border-radius: 16px 16px 0 0;
+    position: relative;
+  }
+  .modal-title { font-size: 22px; font-weight: 800; letter-spacing: 0.3px; }
+  .modal-location { font-size: 13px; opacity: .8; margin-top: 4px; }
+  .modal-rubro { font-size: 12px; margin-top: 8px; background: rgba(255,255,255,0.18); display: inline-block; padding: 3px 12px; border-radius: 20px; }
+  .btn-close {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(255,255,255,0.2);
+    border: none; color: #fff;
+    width: 32px; height: 32px;
+    border-radius: 50%; font-size: 18px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s;
+  }
+  .btn-close:hover { background: rgba(255,255,255,0.35); }
+  .modal-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 18px; }
+  .modal-section h4 { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--azul-oscuro); margin-bottom: 8px; }
+  .modal-section p { font-size: 14px; line-height: 1.7; color: var(--gris); }
+  .modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .modal-section ul li { font-size: 13.5px; padding-left: 18px; position: relative; color: var(--gris); line-height: 1.5; }
+  .modal-section ul li::before { content: '▸'; position: absolute; left: 0; color: var(--azul-medio); }
+  .modal-mercados { display: flex; flex-wrap: wrap; gap: 6px; }
+  .modal-footer {
+    padding: 0 28px 24px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-action {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    transition: opacity .15s, transform .15s;
+  }
+  .btn-action:hover { opacity: .88; transform: translateY(-1px); }
+  .btn-mail { background: var(--azul-medio); color: #fff; }
+  .btn-web { background: var(--azul-oscuro); color: #fff; }
+  .contact-grid { display: grid; gap: 8px; }
+  .contact-item { font-size: 13px; display: flex; gap: 8px; align-items: flex-start; }
+  .contact-item strong { color: var(--azul-oscuro); flex-shrink: 0; min-width: 80px; }
+  .contact-item a { color: var(--azul-medio); text-decoration: none; word-break: break-all; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  /* ── NO RESULTS ── */
+  .no-results {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #aaa;
+    font-size: 16px;
+  }
+  .no-results span { font-size: 40px; display: block; margin-bottom: 12px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--azul-oscuro);
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    margin-top: auto;
+  }
+  .footer-logos { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-logo { font-size: 14px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 6px; }
+  .footer-pymes { color: var(--naranja); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    aside { display: none; }
+    .layout { padding: 14px; }
+  }
+  @media (max-width: 600px) {
+    .header-inner { padding: 10px 14px; gap: 10px; }
+    .header-title { display: none; }
+    .search-box input { width: 160px; }
+    .search-box input:focus { width: 180px; }
+    select { max-width: 120px; }
+    .grid { grid-template-columns: 1fr; }
+    .modal-body, .modal-footer { padding: 16px 18px; }
+    .modal-header { padding: 18px; }
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--azul-claro); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-shield">◈</div>
+      <div class="logo-text">
+        <strong>Cámara Argentina de</strong>
+        <span>Comercio y Servicios</span>
+      </div>
+    </div>
+    <div class="header-title">Perfil Exportador · Misión Comercial Paraguay 2026</div>
+    <div class="header-controls">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Buscar empresa, rubro..." autocomplete="off">
+      </div>
+      <select id="filterRubro">
+        <option value="">Todos los rubros</option>
+        <option value="Alimentos">Alimentos</option>
+        <option value="IT">IT / Software</option>
+        <option value="Industrial">Industrial</option>
+        <option value="Construcción">Construcción</option>
+        <option value="Química">Química</option>
+        <option value="Goma">Goma y Plástico</option>
+      </select>
+      <select id="filterProv">
+        <option value="">Todas las provincias</option>
+        <option value="Buenos Aires">Buenos Aires</option>
+        <option value="CABA">CABA</option>
+        <option value="Córdoba">Córdoba</option>
+        <option value="Santa Fe">Santa Fe</option>
+        <option value="Entre Ríos">Entre Ríos</option>
+        <option value="Corrientes">Corrientes</option>
+        <option value="Misiones">Misiones</option>
+      </select>
+      <select id="filterMercado">
+        <option value="">Todos los mercados</option>
+        <option value="Paraguay">Paraguay</option>
+        <option value="Uruguay">Uruguay</option>
+        <option value="Brasil">Brasil</option>
+        <option value="Chile">Chile</option>
+        <option value="Colombia">Colombia</option>
+        <option value="Bolivia">Bolivia</option>
+        <option value="Estados Unidos">Estados Unidos</option>
+        <option value="México">México</option>
+        <option value="España">España</option>
+      </select>
+      <button class="btn-clear" onclick="clearFilters()">✕ Limpiar</button>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <div class="aside-header">Índice · 22 empresas</div>
+    <ul class="aside-list" id="sidebarList"></ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main>
+    <div class="results-bar">
+      <div class="results-count">Mostrando <span id="countDisplay">22</span> de 22 empresas</div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logos">
+    <div class="footer-logo">◈ Cámara Argentina de Comercio y Servicios</div>
+    <div class="footer-logo"><span class="footer-pymes">➤</span> PYMES AL MUNDO</div>
+  </div>
+  <div>Misión Comercial · Paraguay 2026</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header" id="modalHeader"></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<script>
+const empresas = [
+  {
+    id: 1,
+    nombre: "Alimentos Noly SA",
+    ciudad: "Caseros",
+    provincia: "Buenos Aires",
+    rubro: "Alimentos",
+    rubroTag: "Alimentos",
+    descripcion: "Empresa argentina con más de 40 años de trayectoria, dedicada a la elaboración y comercialización de productos de alta calidad y valor nutricional. Cuenta con planta propia equipada con tecnología de punta, donde produce panes, tapas de empanadas y pascualinas, tortillas para tacos, prepizzas, pastas y una línea dulce que incluye alfajores, budines y pan dulce. Posee certificaciones en calidad, inocuidad y responsabilidad social, además de un laboratorio propio para investigación, desarrollo e innovación de productos.",
+    mercados: ["Estados Unidos", "España"],
+    productos: ["Alfajores (Golosinas)", "Dulce de leche", "Pan de molde (lacteado, salvado y premium)", "Pan dulce y budines", "Tortillas clásicas e integrales", "Pastas frescas, rellenas, sin TACC", "Tapas de empanadas y pascualina"],
+    representantes: ["Nicolás Arrojo | Director de Comercio Exterior"],
+    mails: ["comex@noly.com.ar", "narrojo@noly.com.ar"],
+    web: "www.noly.com.ar"
+  },
+  {
+    id: 2,
+    nombre: "ARO SA",
+    ciudad: "CABA",
+    provincia: "CABA",
+    rubro: "Industrial",
+    rubroTag: "Industrial",
+    descripcion: "Empresa argentina con más de 64 años de trayectoria, especializada en soluciones integrales en análisis, medición y control de calidad. Se dedica a la comercialización de instrumentos de medición, equipos para ensayos no destructivos, equipos para control de lubricantes y de materiales, equipos para ensayos mecánicos, entre otros.",
+    mercados: ["Estados Unidos", "Uruguay"],
+    productos: ["Puestas en marcha de equipamiento", "Placas radiográficas", "Instrumentos de medición", "Equipos ensayos no destructivos"],
+    representantes: ["Nelson Da Silva | Ingeniero", "Martín Chimenti | Ingeniero"],
+    mails: ["n.dasilva@aroline.com.ar", "m.chimenti@aroline.com.ar"],
+    web: "www.arowebsite.com"
+  },
+  {
+    id: 3,
+    nombre: "Aroquim SRL",
+    ciudad: "Buenos Aires",
+    provincia: "Buenos Aires",
+    rubro: "Química",
+    rubroTag: "Química",
+    descripcion: "Empresa argentina que desde 1982 se dedica a la investigación, desarrollo y producción de esencias aromáticas para todas las industrias. Su objetivo es superar día a día la calidad de sus fragancias y la confiabilidad de sus clientes, con capacitación, compromiso y responsabilidad. Analizando las últimas tendencias del mercado perfumista, compone aromas con notas innovadoras, distintivas y atemporales, posicionándose como empresa referente en el sector.",
+    mercados: ["Uruguay"],
+    productos: ["Esencias aromáticas para la industria"],
+    representantes: ["Miguel Carmelo | Socio Gerente"],
+    mails: ["caramelo_miguel@aroquim.com.ar"],
+    web: "www.aroquim.com.ar"
+  },
+  {
+    id: 4,
+    nombre: "Atrix SA",
+    ciudad: "Córdoba",
+    provincia: "Córdoba",
+    rubro: "IT - Software de Gestión de Activos",
+    rubroTag: "IT",
+    descripcion: "Atrix SA es la empresa desarrolladora del Software de Gestión de Activos CONSUMAN, con más de 30 años de trayectoria en el mercado local y regional. Son líderes en Software de Gestión de Activos tanto en mantenimiento edilicio, como en industrias y flota de vehículos. Hoy cuenta con más de 300 clientes en la región.",
+    mercados: ["Brasil", "Perú", "Colombia", "Uruguay"],
+    productos: ["Servicio de implementación de Software de Mantenimiento y Gestión de Activos", "Modalidad SaaS o alquiler mensual por uso de licencias"],
+    representantes: ["Jose Luis Barbero | Director Comercial"],
+    mails: ["jbarbero@consuman.com"],
+    web: "www.consuman.com"
+  },
+  {
+    id: 5,
+    nombre: "Buen Sol SRL",
+    ciudad: "Santa Fe",
+    provincia: "Santa Fe",
+    rubro: "Alimentos",
+    rubroTag: "Alimentos",
+    descripcion: "Buen Sol es un mayorista de alimentos que comercializa en varias localidades con logística propia garantizando servicio y calidad. Además industrializa varios productos con su marca propia 'Estreno', donde se destacan las aceitunas de amplia variedad de tipos y presentaciones, las cuales son el interés de llevar al mercado externo.",
+    mercados: [],
+    productos: ["Aceitunas de amplia variedad de presentaciones y tipos"],
+    representantes: ["María Lorena Rolon | Socia Gerente", "Andrés Horacio Rolon | Socio Gerente"],
+    mails: ["lorenabuensol@gmail.com", "rolonandresh@gmail.com"],
+    web: "www.buensol.com.ar"
+  },
+  {
+    id: 6,
+    nombre: "Compañía Agroindustrial SRL",
+    ciudad: "Santa Fe",
+    provincia: "Santa Fe",
+    rubro: "Alimentos",
+    rubroTag: "Alimentos",
+    descripcion: "Empresa argentina especializada en la elaboración y abastecimiento de pulpas, preparados y soluciones de frutas para la industria alimentaria, como así también productos para retail, conservas en almíbar, pulpas, mini porciones de mermeladas y dulce de leche, purés de frutas.",
+    mercados: ["Paraguay"],
+    productos: ["Enlatados en conservas", "Puré de frutas en doypack", "Mermeladas en mini porciones", "Preparados industriales de frutas para industrias lácteas, heladerías y repostería"],
+    representantes: ["Hugo Bianchi | Socio Gerente"],
+    mails: ["caisrl@caisrl.com.ar"],
+    web: "www.caisrl.com.ar"
+  },
+  {
+    id: 7,
+    nombre: "Complejo Industrial Alimentary SA",
+    ciudad: "Córdoba",
+    provincia: "Córdoba",
+    rubro: "Alimentos",
+    rubroTag: "Alimentos",
+    descripcion: "Grupo Varas es un grupo industrial argentino enfocado en la producción y comercialización de alimentos, principalmente pastas secas y harinas. Opera a través de unidades como CIASA y Molino Río Segundo, con base productiva en Córdoba. Cuenta con marcas propias como Celestial, Capannoli, Fidelli y Donaci, orientadas a distintos segmentos de mercado. Posee certificación FSSC 22000, garantizando estándares internacionales de calidad e inocuidad.",
+    mercados: ["Chile", "Uruguay", "Cuba", "Costa Rica"],
+    productos: ["Pastas secas", "Harina de trigo", "Legumbres"],
+    representantes: ["Gonzalo De Mora | Ejecutivo de Comex"],
+    mails: ["gdemora@molinoriosegundo.com.ar"],
+    web: "www.grupovaras.com.ar"
+  },
+  {
+    id: 8,
+    nombre: "Cuantico Technology",
+    ciudad: "Entre Ríos",
+    provincia: "Entre Ríos",
+    rubro: "IT | ERP con IA y BI",
+    rubroTag: "IT",
+    descripcion: "Cuantico ERP es una empresa dedicada al desarrollo e implementación de sistemas de gestión empresarial (ERP) que optimizan y automatizan procesos administrativos, contables, comerciales y operativos. Integra tecnologías de inteligencia artificial para mejorar la toma de decisiones y brinda soluciones a empresas en toda Latinoamérica.",
+    mercados: ["Bolivia", "Perú", "Ecuador", "Estados Unidos", "España", "México", "Paraguay", "Uruguay"],
+    productos: ["Desarrollo, implementación y soporte de ERP", "Aplicaciones mobile y software a medida", "Consultoría y capacitación a usuarios", "Inteligencia artificial para gestión empresarial"],
+    representantes: ["Diego Grinóvero | CEO", "Ailen Arce | Comercio Internacional"],
+    mails: ["dgrinovero@gmail.com", "aarce@cuantico.com.ar"],
+    web: "www.cuantico.com.ar"
+  },
+  {
+    id: 9,
+    nombre: "Frutargen SA (Argenfrut)",
+    ciudad: "CABA",
+    provincia: "CABA",
+    rubro: "Alimentos",
+    rubroTag: "Alimentos",
+    descripcion: "Empresa especializada en la elaboración de productos de grageados, con venta mayorista para la industria. Fundada hace más de veinte años, comenzó enfocada en el sector de heladerías y amplió su oferta hacia panaderías, confiterías, reposterías, cotillón y grandes empresas de consumo masivo. Combina la tradición artesanal con tecnología moderna, seleccionando cuidadosamente sus materias primas y aplicando buenas prácticas de manufactura.",
+    mercados: ["Paraguay", "Uruguay", "Chile"],
+    productos: ["Confitería: Almendras y frutos secos bañados en chocolate (Sin TACC)", "Golosinas: Chocolates, pastas de marroc, avellanas y maní", "Snacks: Maní saborizado, maní con chocolate semiamargo", "Suplementos dietarios: Almendras, avellanas, cranberries"],
+    representantes: ["Gabriel Ignacio Ibarra | Responsable Dto. Ventas"],
+    mails: ["gibarra@frutargen.com.ar"],
+    web: "www.argenfrut.com.ar"
+  },
+  {
+    id: 10,
+    nombre: "Idear Tech",
+    ciudad: "Santa Fe",
+    provincia: "Santa Fe",
+    rubro: "IT | Desarrollo de Software",
+    rubroTag: "IT",
+    descripcion: "Empresa de desarrollo de software con una suite de soluciones orientadas a logística y otra orientada a gobiernos. Desarrollan soluciones para la digitalización de procesos empresariales y gubernamentales.",
+    mercados: ["Colombia"],
+    productos: ["Suite logística: Fuerza de Ventas, Última Milla, Gestor de almacenes, Mantenimiento de Flotas", "Plataforma de digitalización de trámites y expedientes para gobiernos"],
+    representantes: ["Héctor Rossetto | CEO"],
+    mails: ["hrossetto@ideartechcorp.com"],
+    web: "www.ideartechcorp.com"
+  },
+  {
+    id: 11,
+    nombre: "iSource",
+    ciudad: "Corrientes",
+    provincia: "Corrientes",
+    rubro: "IT | Desarrollo de Software",
+    rubroTag: "IT",
+    descripcion: "Empresa que desarrolla soluciones de software confiables e innovadoras que permiten mejorar la gestión operativa y estratégica de sus clientes.",
+    mercados: ["Colombia"],
+    productos: ["Desarrollo de Software a medida", "Inteligencia Artificial"],
+    representantes: ["Martin Di Biasi | CEO", "Emiliano Di Biasi | Director de Tecnología"],
+    mails: ["hexanet@gmail.com", "emidbiasi@gmail.com"],
+    web: "www.isource.com.ar"
+  },
+  {
+    id: 12,
+    nombre: "Met Sur SRL",
+    ciudad: "Buenos Aires",
+    provincia: "Buenos Aires",
+    rubro: "Goma y plástico",
+    rubroTag: "Goma",
+    descripcion: "Fabricante de productos de goma y plástico para la industria. Especialistas en soluciones antivibratorias (patas para máquinas). Además fabrican regatones para sillas y diafragmas industriales. Son desarrolladores de CLAVASOLO, una marca de productos de pesca de diseño exclusivo con clavada automática.",
+    mercados: ["Bolivia"],
+    productos: ["Patas para máquinas", "Acoples antivibratorios", "Regatones", "Boyas", "Posacañas para pesca con clavada automática"],
+    representantes: ["Anabella Silvestre | Sub-gerente de ventas"],
+    mails: ["info@metsur.com"],
+    web: "www.metsur.com"
+  },
+  {
+    id: 13,
+    nombre: "Pampa Brava",
+    ciudad: "Buenos Aires",
+    provincia: "Buenos Aires",
+    rubro: "Construcción",
+    rubroTag: "Construcción",
+    descripcion: "Empresa dedicada al desarrollo de soluciones de construcción modular eficientes y sustentables. Reducen tiempos y costos frente a la construcción tradicional mediante procesos industrializados y menor impacto ambiental. La transportabilidad y versatilidad de sus módulos generan una ventaja competitiva concreta. Infraestructura inteligente para entornos exigentes.",
+    mercados: [],
+    productos: ["Módulos habitaciones transportables"],
+    representantes: ["Jesús Ruben Pesse | Sub-gerente de ventas"],
+    mails: ["jesusrubenpesse@gmail.com"],
+    web: "www.pampabrava.com.ar"
+  },
+  {
+    id: 14,
+    nombre: "Productos Trimak SA",
+    ciudad: "Buenos Aires",
+    provincia: "Buenos Aires",
+    rubro: "Alimentos",
+    rubroTag: "Alimentos",
+    descripcion: "Trimak es una empresa formada en el año 1966 por un grupo familiar con amplios conocimientos técnicos en la elaboración de galletitas y budines. A través de los años aplicó nuevas y modernas tecnologías, pudiendo ofrecer hoy una amplia variedad de galletitas dulces, bañadas con exquisito chocolate de repostería, alfajores y budines, elaborados durante todo el año. Cuenta con producción cuidadosamente supervisada por personal especializado con exhaustivo control de calidad.",
+    mercados: ["Paraguay", "Uruguay"],
+    productos: ["Galletitas Dulces", "Alfajores", "Budines"],
+    representantes: ["Jorge Antonio Ventrici | Presidente", "Paola Ventrici | Administración y Finanzas"],
+    mails: ["jorge.ventrici@trimak.com.ar"],
+    web: "www.trimak.com.ar"
+  },
+  {
+    id: 15,
+    nombre: "Relex SRL",
+    ciudad: "Misiones",
+    provincia: "Misiones",
+    rubro: "IT | Software y Servicios Informáticos",
+    rubroTag: "IT",
+    descripcion: "Empresa socia estratégica para organizaciones que buscan calidad y eficiencia en su transformación digital. Se especializan en desarrollo e implementación de software a medida utilizando metodologías ágiles, complementados con servicios de testing y calidad. Implementación de sistemas para tratamiento de datos geoespaciales y App SIG Móvil para recolección de datos en campo.",
+    mercados: ["Paraguay", "Uruguay"],
+    productos: ["Metodologías Ágiles en desarrollo de software", "Aseguramiento de Calidad (QA) y testing", "Soluciones End-to-End de transformación digital", "Tecnología Geoespacial y App SIG Móvil"],
+    representantes: ["Eduardo Silva | Gerente"],
+    mails: ["eduardo@relex.ar"],
+    web: "www.relex.com.ar"
+  },
+  {
+    id: 16,
+    nombre: "Seitu",
+    ciudad: "Buenos Aires",
+    provincia: "Buenos Aires",
+    rubro: "Alimentos",
+    rubroTag: "Alimentos",
+    descripcion: "Sei Tu es una empresa dedicada a la producción, distribución y venta exclusiva de productos helados, reconocida en todo el país. Abastece a líneas de ventas mayoristas, minoristas, hogareña, gastronómica, impulsiva y granel. Cuenta con más de 300 puntos de venta y una amplia red de heladerías en las principales ciudades del país. Su diferencial es la calidad, respaldada por personal técnico especializado de su laboratorio interno.",
+    mercados: ["Chile"],
+    productos: ["Helados", "Postres Helados", "Helados de Palitos", "Latas Heladerías"],
+    representantes: ["Gabriela Stranges | Socia"],
+    mails: ["gabriela@seitu.com", "administracion@seitu.com"],
+    web: "www.seitu.com"
+  },
+  {
+    id: 17,
+    nombre: "Sideas Group",
+    ciudad: "CABA",
+    provincia: "CABA",
+    rubro: "IT | Software",
+    rubroTag: "IT",
+    descripcion: "Sideas es una empresa de tecnología que actúa como socio estratégico para sus clientes, ayudándolos a diseñar, construir y evolucionar soluciones digitales. Su enfoque combina desarrollo de software, integración de sistemas y consultoría técnica, con fuerte énfasis en automatización, arquitectura escalable y mejora continua de procesos. Busca involucrarse en el negocio para aportar valor a largo plazo.",
+    mercados: ["México", "Paraguay", "Holanda"],
+    productos: ["Desarrollo e integración de soluciones (.NET y cloud)", "Evolución y mantenimiento de sistemas críticos", "Consultoría técnica de arquitectura, performance y seguridad", "Armado de equipos a medida (perfiles puntuales o células completas)"],
+    representantes: ["Marcos Vodanovich | Socio Fundador", "Claudio Vodanovich | CCO"],
+    mails: ["marcos.vodanovich@sideas.com.ar", "claudio.vodanovich@sideas.com.ar"],
+    web: "www.sideasgroup.com"
+  },
+  {
+    id: 18,
+    nombre: "Develone",
+    ciudad: "CABA",
+    provincia: "CABA",
+    rubro: "IT | Desarrollo de Software",
+    rubroTag: "IT",
+    descripcion: "Empresa tecnológica especializada en el desarrollo de software a medida, plataformas SaaS, automatización de workflows e integración de inteligencia artificial en procesos de negocio. Desarrolla soluciones para retail, ecommerce, control de accesos e integración con sistemas empresariales como ERP (incluyendo SAP). Diseñan dispositivos electrónicos e IoT integrados con software. Trabajan con empresas en América Latina brindando soluciones escalables.",
+    mercados: [],
+    productos: ["Desarrollo de Software a medida", "Plataformas SaaS", "Inteligencia Artificial (IA)", "IoT y dispositivos electrónicos"],
+    representantes: ["Matias Choquevilca"],
+    mails: ["contacto@develone.com"],
+    web: "www.develone.com"
+  },
+  {
+    id: 19,
+    nombre: "Sysemc Tecnología SRL",
+    ciudad: "CABA",
+    provincia: "CABA",
+    rubro: "IT | Desarrollo de Software",
+    rubroTag: "IT",
+    descripcion: "Empresa argentina especializada en soluciones tecnológicas empresariales. Con más de 15 años de experiencia, brindan servicios de cloud computing, infraestructura de redes y soporte técnico a empresas de todos los tamaños. Se especializa en infraestructura cloud escalable y segura con servidores dedicados en Argentina, backup automatizado con redundancia, desktop virtual para trabajo remoto y servidores VPS de alto rendimiento. Más de 500 proyectos concretados.",
+    mercados: ["Brasil", "Paraguay"],
+    productos: ["Servicios Cloud", "Servidores VPS", "Infraestructura cloud", "Soluciones de backup", "Ciberseguridad"],
+    representantes: ["Emilina Gennai | Ventas"],
+    mails: ["emiliano.gennai@sysemc.com.ar"],
+    web: "www.sysemc.com"
+  },
+  {
+    id: 20,
+    nombre: "Ukan",
+    ciudad: "CABA",
+    provincia: "CABA",
+    rubro: "Industrial Metalúrgico",
+    rubroTag: "Industrial",
+    descripcion: "UKAN S.A. comercializa para toda Latinoamérica la más amplia gama de maquinarias y equipos auxiliares para la industria del acero y del cobre. Representan prestigiosas empresas europeas productoras de máquinas y equipos auxiliares destinados a fabricantes de CABLES, TUBOS, ALAMBRES y sus derivados. No son revendedores sino representantes oficiales de las principales marcas europeas para la región.",
+    mercados: ["Bolivia", "Perú", "Colombia", "Chile", "Centroamérica", "Ecuador", "Paraguay", "Uruguay"],
+    productos: ["Equipos para conformación de tubos de acero", "Máquinas para trefilado de alambre", "Fabricación de cables de cobre, aluminio y aleaciones", "Equipos de corte, soldado y enderezado de alambre"],
+    representantes: ["Julieta Areste"],
+    mails: ["julietaareste@ukan.com.ar"],
+    web: "Instagram: @ukansa"
+  },
+  {
+    id: 21,
+    nombre: "Unified Solutions SA",
+    ciudad: "Buenos Aires",
+    provincia: "Buenos Aires",
+    rubro: "IT | Desarrollo de Software",
+    rubroTag: "IT",
+    descripcion: "Empresa joven y dinámica comprometida con la innovación y la excelencia en el campo de la tecnología de la información. Su experiencia abarca desde la implementación y administración de bases de datos hasta el monitoreo proactivo con alertas y notificaciones para anticipar incidentes. Facilitan la automatización mediante Infrastructure as Code (IaC), agilizando despliegues y cambios de configuración.",
+    mercados: [],
+    productos: ["Gestión de Centro de Cómputos", "Gestión de Infraestructura virtual / on premise (VMWARE / REDHAT / HIPER-V)", "Implementación de Data Guard (VEEAM)"],
+    representantes: ["Nicolás Larronde | Gerente Comercial", "Guillermo Gelso | CTO"],
+    mails: ["nicolas.larronde@unified.ar", "ggelso@unified.ar"],
+    web: "www.unified.ar"
+  },
+  {
+    id: 22,
+    nombre: "Wise CX",
+    ciudad: "Córdoba",
+    provincia: "Córdoba",
+    rubro: "IT | Software CX",
+    rubroTag: "IT",
+    descripcion: "WiseCX es una plataforma de experiencia del cliente (CX) que centraliza y optimiza la comunicación entre empresas y usuarios a través de múltiples canales como WhatsApp, redes sociales, email, chat web y teléfono. Permite automatizar conversaciones con inteligencia artificial, gestionar interacciones en un solo lugar y obtener insights para mejorar la atención, la eficiencia operativa y la satisfacción del cliente.",
+    mercados: ["Brasil", "Perú", "Colombia", "Chile", "Centroamérica", "Ecuador", "España", "México", "Paraguay", "Uruguay"],
+    productos: ["Plataforma omnicanal de experiencia del cliente (CX)", "Automatización con Inteligencia Artificial", "Gestión de WhatsApp, redes sociales, email, chat y teléfono", "Analytics e insights de atención al cliente"],
+    representantes: ["Maria Lucrecia Castro | Líder de Marketing", "Dolores Dominguez | Responsable de Cuentas Corporativas"],
+    mails: ["dolores.d@wisecx.com"],
+    web: "www.wisecx.com"
+  }
+];
+
+// Sort alphabetically
+empresas.sort((a,b) => a.nombre.localeCompare(b.nombre, 'es'));
+
+let filtered = [...empresas];
+
+// Build sidebar
+function buildSidebar() {
+  const list = document.getElementById('sidebarList');
+  list.innerHTML = empresas.map((e, i) =>
+    `<li><a href="#card-${e.id}" onclick="scrollToCard(${e.id}); return false;">
+      <span class="aside-num">${String(i+1).padStart(2,'0')}</span>
+      ${e.nombre}
+    </a></li>`
+  ).join('');
+}
+
+function scrollToCard(id) {
+  const el = document.getElementById('card-' + id);
+  if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.borderColor = 'var(--azul-medio)'; setTimeout(() => el.style.borderColor = '', 1500); }
+}
+
+// Build cards
+function buildCards() {
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('countDisplay');
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="no-results"><span>🔍</span>No se encontraron empresas con los filtros seleccionados.</div>`;
+    count.textContent = '0';
+    return;
+  }
+
+  count.textContent = filtered.length;
+  grid.innerHTML = filtered.map(e => {
+    const mercadosChips = e.mercados.slice(0, 4).map(m => `<span class="chip chip-mercado">${m}</span>`).join('');
+    const masChip = e.mercados.length > 4 ? `<span class="chip chip-mercado">+${e.mercados.length-4}</span>` : '';
+    const descShort = e.descripcion.length > 200;
+    const mails = e.mails.map(m => `<a href="mailto:${m}">${m}</a>`).join('<br>');
+    const products = e.productos.slice(0,4).map(p => `<li>${p}</li>`).join('');
+    return `
+    <div class="card" id="card-${e.id}" onclick="openModal(${e.id})">
+      <span class="card-badge">${e.nombre}</span>
+      <div class="card-location">📍 ${e.ciudad}, ${e.provincia}</div>
+      <div>
+        <p class="card-desc collapsed" id="desc-${e.id}">${e.descripcion}</p>
+        ${descShort ? `<button class="btn-more" onclick="event.stopPropagation(); toggleDesc(${e.id}, this)">Ver más ▾</button>` : ''}
+      </div>
+      <div class="chips">
+        <span class="chip chip-rubro">${e.rubro}</span>
+        ${mercadosChips}${masChip}
+      </div>
+      <ul class="card-products">${products}</ul>
+      <div class="card-contact" onclick="event.stopPropagation()">
+        <div class="contact-row"><span class="contact-label">✉</span><span>${mails}</span></div>
+        ${e.web && !e.web.startsWith('Instagram') ? `<div class="contact-row"><span class="contact-label">🌐</span><a href="https://${e.web}" target="_blank">${e.web}</a></div>` : ''}
+        <div class="contact-row"><span class="contact-label">👤</span><span>${e.representantes[0]}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleDesc(id, btn) {
+  const el = document.getElementById('desc-' + id);
+  if (el.classList.contains('collapsed')) {
+    el.classList.remove('collapsed');
+    btn.textContent = 'Ver menos ▴';
+  } else {
+    el.classList.add('collapsed');
+    btn.textContent = 'Ver más ▾';
+  }
+}
+
+// Modal
+function openModal(id) {
+  const e = empresas.find(x => x.id === id);
+  if (!e) return;
+
+  document.getElementById('modalHeader').innerHTML = `
+    <button class="btn-close" onclick="closeModal()">×</button>
+    <div class="modal-title">${e.nombre}</div>
+    <div class="modal-location">📍 ${e.ciudad}, ${e.provincia}</div>
+    <div class="modal-rubro">${e.rubro}</div>
+  `;
+
+  const mercadosHtml = e.mercados.length
+    ? `<div class="modal-mercados">${e.mercados.map(m=>`<span class="chip chip-mercado">${m}</span>`).join('')}</div>`
+    : '<p style="color:#aaa;font-size:13px">No especificados</p>';
+
+  const repHtml = e.representantes.map(r => `<li>${r}</li>`).join('');
+  const mailHtml = e.mails.map(m => `<div class="contact-item"><strong>Email:</strong><a href="mailto:${m}">${m}</a></div>`).join('');
+  const webHtml = e.web && !e.web.startsWith('Instagram')
+    ? `<div class="contact-item"><strong>Web:</strong><a href="https://${e.web}" target="_blank">${e.web}</a></div>`
+    : (e.web ? `<div class="contact-item"><strong>Redes:</strong><span>${e.web}</span></div>` : '');
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-section">
+      <h4>Descripción</h4>
+      <p>${e.descripcion}</p>
+    </div>
+    <div class="modal-section">
+      <h4>Mercados atendidos</h4>
+      ${mercadosHtml}
+    </div>
+    <div class="modal-section">
+      <h4>Productos / Servicios</h4>
+      <ul>${e.productos.map(p=>`<li>${p}</li>`).join('')}</ul>
+    </div>
+    <div class="modal-section">
+      <h4>Representantes</h4>
+      <ul>${repHtml}</ul>
+    </div>
+    <div class="modal-section">
+      <h4>Contacto</h4>
+      <div class="contact-grid">
+        ${mailHtml}
+        ${webHtml}
+      </div>
+    </div>
+  `;
+
+  const mails1 = e.mails[0];
+  const webUrl = e.web && !e.web.startsWith('Instagram') ? `https://${e.web}` : null;
+  document.getElementById('modalFooter').innerHTML = `
+    <a class="btn-action btn-mail" href="mailto:${mails1}">✉ Contactar por mail</a>
+    ${webUrl ? `<a class="btn-action btn-web" href="${webUrl}" target="_blank">🌐 Visitar sitio web</a>` : ''}
+  `;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Filters
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const rubro = document.getElementById('filterRubro').value;
+  const prov = document.getElementById('filterProv').value;
+  const mercado = document.getElementById('filterMercado').value;
+
+  filtered = empresas.filter(e => {
+    const matchQ = !q || e.nombre.toLowerCase().includes(q) || e.rubro.toLowerCase().includes(q) || e.productos.some(p => p.toLowerCase().includes(q)) || e.descripcion.toLowerCase().includes(q);
+    const matchRubro = !rubro || e.rubroTag === rubro || (rubro === 'IT' && e.rubroTag === 'IT');
+    const matchProv = !prov || e.provincia === prov;
+    const matchMercado = !mercado || e.mercados.some(m => m.includes(mercado));
+    return matchQ && matchRubro && matchProv && matchMercado;
+  });
+
+  buildCards();
+}
+
+function clearFilters() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('filterRubro').value = '';
+  document.getElementById('filterProv').value = '';
+  document.getElementById('filterMercado').value = '';
+  filtered = [...empresas];
+  buildCards();
+}
+
+// Events
+document.getElementById('searchInput').addEventListener('input', applyFilters);
+document.getElementById('filterRubro').addEventListener('change', applyFilters);
+document.getElementById('filterProv').addEventListener('change', applyFilters);
+document.getElementById('filterMercado').addEventListener('change', applyFilters);
+
+// ESC key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }});
+
+// Init
+buildSidebar();
+buildCards();
+</script>
+</body>
+</html>
